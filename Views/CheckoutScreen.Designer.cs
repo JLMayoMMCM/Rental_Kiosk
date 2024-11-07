@@ -33,7 +33,7 @@
             this.BackBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TotalCostDsply = new System.Windows.Forms.TextBox();
-            this.ConfirmBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CartOrderSmmry)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,18 +102,18 @@
             this.TotalCostDsply.TabIndex = 5;
             this.TotalCostDsply.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ConfirmBtn
+            // button1
             // 
-            this.ConfirmBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ConfirmBtn.BackColor = System.Drawing.Color.SpringGreen;
-            this.ConfirmBtn.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmBtn.Location = new System.Drawing.Point(615, 285);
-            this.ConfirmBtn.Name = "ConfirmBtn";
-            this.ConfirmBtn.Size = new System.Drawing.Size(150, 38);
-            this.ConfirmBtn.TabIndex = 6;
-            this.ConfirmBtn.Text = "CONFIRM RENT";
-            this.ConfirmBtn.UseVisualStyleBackColor = false;
-            this.ConfirmBtn.Click += new System.EventHandler(this.Complete_Order);
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.LawnGreen;
+            this.button1.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(615, 285);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 38);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "DELETE ITEM";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Confirm_Order);
             // 
             // CheckoutScreen
             // 
@@ -122,7 +122,7 @@
             this.BackgroundImage = global::Rental_Kiosk.Properties.Resources.Intro;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ConfirmBtn);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.TotalCostDsply);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BackBtn);
@@ -145,6 +145,6 @@
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TotalCostDsply;
-        private System.Windows.Forms.Button ConfirmBtn;
+        private System.Windows.Forms.Button button1;
     }
 }

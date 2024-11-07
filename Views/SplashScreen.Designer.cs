@@ -28,23 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TapPrompt = new System.Windows.Forms.Label();
             this.ProgramLogo = new System.Windows.Forms.Label();
+            this.LendBtn = new System.Windows.Forms.Button();
+            this.RentBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // TapPrompt
-            // 
-            this.TapPrompt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TapPrompt.AutoSize = true;
-            this.TapPrompt.BackColor = System.Drawing.Color.Transparent;
-            this.TapPrompt.Font = new System.Drawing.Font("McLaren", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TapPrompt.Location = new System.Drawing.Point(244, 319);
-            this.TapPrompt.Name = "TapPrompt";
-            this.TapPrompt.Size = new System.Drawing.Size(334, 46);
-            this.TapPrompt.TabIndex = 0;
-            this.TapPrompt.Text = "TAP TO CONTINUE";
-            this.TapPrompt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.TapPrompt.Click += new System.EventHandler(this.LoginTransition);
             // 
             // ProgramLogo
             // 
@@ -52,12 +39,38 @@
             this.ProgramLogo.AutoSize = true;
             this.ProgramLogo.BackColor = System.Drawing.Color.Transparent;
             this.ProgramLogo.Font = new System.Drawing.Font("McLaren", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProgramLogo.Location = new System.Drawing.Point(207, 75);
+            this.ProgramLogo.Location = new System.Drawing.Point(195, 75);
             this.ProgramLogo.Name = "ProgramLogo";
             this.ProgramLogo.Size = new System.Drawing.Size(408, 69);
             this.ProgramLogo.TabIndex = 1;
             this.ProgramLogo.Text = "RENT-A-THING";
             this.ProgramLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LendBtn
+            // 
+            this.LendBtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.LendBtn.Font = new System.Drawing.Font("McLaren", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LendBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LendBtn.Location = new System.Drawing.Point(295, 240);
+            this.LendBtn.Name = "LendBtn";
+            this.LendBtn.Size = new System.Drawing.Size(210, 68);
+            this.LendBtn.TabIndex = 2;
+            this.LendBtn.Text = "LEND";
+            this.LendBtn.UseVisualStyleBackColor = false;
+            this.LendBtn.Click += new System.EventHandler(this.LendBtn_Click);
+            // 
+            // RentBtn
+            // 
+            this.RentBtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.RentBtn.Font = new System.Drawing.Font("McLaren", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RentBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.RentBtn.Location = new System.Drawing.Point(295, 330);
+            this.RentBtn.Name = "RentBtn";
+            this.RentBtn.Size = new System.Drawing.Size(210, 68);
+            this.RentBtn.TabIndex = 3;
+            this.RentBtn.Text = "RENT";
+            this.RentBtn.UseVisualStyleBackColor = false;
+            this.RentBtn.Click += new System.EventHandler(this.RentBtn_Click);
             // 
             // SplashScreen
             // 
@@ -66,21 +79,21 @@
             this.BackgroundImage = global::Rental_Kiosk.Properties.Resources.Intro;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.RentBtn);
+            this.Controls.Add(this.LendBtn);
             this.Controls.Add(this.ProgramLogo);
-            this.Controls.Add(this.TapPrompt);
             this.Name = "SplashScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Rent-A-Thing";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Click += new System.EventHandler(this.LoginTransition);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label TapPrompt;
         private System.Windows.Forms.Label ProgramLogo;
+        private System.Windows.Forms.Button LendBtn;
+        private System.Windows.Forms.Button RentBtn;
     }
 }

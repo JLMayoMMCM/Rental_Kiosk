@@ -41,7 +41,19 @@ namespace Rental_Kiosk.Views
             loadData();
         }
 
-        private void Complete_Order(object sender, System.EventArgs e)
+        private void EndTransition()
+        {
+            this.Close();
+            EndScreen endScreen = new EndScreen();
+            endScreen.Show();
+        }
+
+        private void PrintRental()
+        {
+            this.Close();
+        }
+
+        private void Confirm_Order(object sender, System.EventArgs e)
         {
             int TotalCost = int.Parse(TotalCostDsply.Text);
 
@@ -52,8 +64,8 @@ namespace Rental_Kiosk.Views
                 DialogResult dialogResult2 = MessageBox.Show("Do you want to print a receipt?", "Receipt Printing", MessageBoxButtons.YesNo);
                 if (dialogResult2 == DialogResult.Yes)
                 {
-                    Student person = Program.CurrentStudent;
-                    MessageBox.Show(ApMD.printReceipt(person, TotalCost));
+                    string receipt = ApMD.printReceipt(TotalCost);
+                    MessageBox.Show(receipt);
                     EndTransition();
                 }
                 else if (dialogResult2 == DialogResult.No)
@@ -66,22 +78,15 @@ namespace Rental_Kiosk.Views
             {
                 MessageBox.Show("Order cancelled");
                 return;
-
             }
-
         }
 
-
-        private void EndTransition()
+        private void CheckoutScreen_Load(object sender, System.EventArgs e)
         {
-            this.Close();
-            EndScreen endScreen = new EndScreen();
-            endScreen.Show();
-        }
 
-        private void PrintRental()
-        {
-            this.Close();
+
+
+
         }
     }
 }

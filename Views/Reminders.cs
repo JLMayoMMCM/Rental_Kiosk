@@ -10,16 +10,23 @@ using System.Windows.Forms;
 
 namespace Rental_Kiosk.Views
 {
-    public partial class EndScreen : Form
+    public partial class Reminders : Form
     {
-        public EndScreen()
+        public Reminders()
         {
             InitializeComponent();
         }
 
-        private void ProgramLogo_Click(object sender, EventArgs e)
+        private void NextBtn_Click(object sender, EventArgs e)
         {
+            LoginTransition();
+        }
 
+        private void LoginTransition()
+        {
+            this.Close();
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
         }
     }
 }

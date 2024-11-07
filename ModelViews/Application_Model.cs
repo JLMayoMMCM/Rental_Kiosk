@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using Rental_App_V1._0.Models;
 using Image = System.Drawing.Image;
+using Rental_App_V1._0.Models;
+using Rental_Kiosk;
 
 namespace Rental_App_V1._0.ModelViews
 {
@@ -270,8 +272,12 @@ namespace Rental_App_V1._0.ModelViews
         }
 
 
-        public String printReceipt(Student person, int totalCost)
+        public String printReceipt(int totalCost)
         {
+            string student = Program.LoginStudentID;
+            Student person = CheckIfExist(student);
+
+
             string receipt = "Receipt\n";
             receipt += "\tRental_App_V1" + "\n";
             receipt += "========================\n";
@@ -280,6 +286,7 @@ namespace Rental_App_V1._0.ModelViews
             receipt += "Student Name\t: " + person.StudentName + "\n";
             receipt += "Total Cost\t: " + totalCost + "\n";
             receipt += "\tItems List" + "\n";
+            receipt += "========================\n";
 
             string query = $"SELECT * FROM Checkout WHERE StudentID = '{person.StudentID}'";
             using (SqlConnection connection = new SqlConnection(connectionString))

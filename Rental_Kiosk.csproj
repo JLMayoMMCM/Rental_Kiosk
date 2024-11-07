@@ -194,6 +194,18 @@
     <Compile Include="Views\PrintRental.Designer.cs">
       <DependentUpon>PrintRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\LendInstruction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LendInstruction.Designer.cs">
+      <DependentUpon>LendInstruction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reminders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Reminders.Designer.cs">
+      <DependentUpon>Reminders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,11 +228,20 @@
     <EmbeddedResource Include="Views\CheckStudent.resx">
       <DependentUpon>CheckStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\EndScreen.resx">
+      <DependentUpon>EndScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ItemRentalView.resx">
       <DependentUpon>ItemRentalView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LendInstruction.resx">
+      <DependentUpon>LendInstruction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reminders.resx">
+      <DependentUpon>Reminders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>

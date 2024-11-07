@@ -33,17 +33,28 @@ namespace Rental_Kiosk.Views
             InitializeComponent();
         }
 
-        private void LoginTransition(object sender, EventArgs e)
+        private void LendBtn_Click(object sender, EventArgs e)
         {
-            //Closes current form and opens the Login form
-            RegisterTransition();
+            LendTransition();
         }
 
-        private void RegisterTransition()
+        private void LendTransition()
+        {
+            this.Close();
+            LendInstruction lend = new LendInstruction();
+            lend.Show();
+        }
+
+        private void RentBtn_Click(object sender, EventArgs e)
+        {
+            RemindersTransition();
+        }
+
+        private void RemindersTransition()
         {
             this.Hide();
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.Show();
+            LendInstruction reminders = new LendInstruction();
+            reminders.Show();
         }
     }
 }
