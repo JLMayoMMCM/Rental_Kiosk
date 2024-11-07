@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Rental_App_V1._0.Models;
 using Rental_App_V1._0.ModelViews;
 
+
 namespace Rental_Kiosk.Views
 {
     public partial class CheckoutScreen : Form
@@ -14,13 +15,15 @@ namespace Rental_Kiosk.Views
         {
             InitializeComponent();
             loadData();
-            TotalCostDsply.Text = ApMD.CalculateTotal(ApMD.importCart(Program.CurrentStudent)).ToString();
         }
 
         private void loadData()
         {
-            DataTable dt = ApMD.importCart(Program.CurrentStudent);
+            DataTable dt = ApMD.importCart(Program.LoginStudentID);
             CartOrderSmmry.DataSource = dt;
+            //Change the value of the total cost
+            TotalCostDsply.Text = ApMD.CalculateTotal(dt).ToString();
+
         }
 
         private void ReturnToGrid(object sender, System.EventArgs e)
@@ -38,9 +41,47 @@ namespace Rental_Kiosk.Views
             loadData();
         }
 
-        private void CartOrderSmmry_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        private void Complete_Order(object sender, System.EventArgs e)
         {
-           TotalCostDsply.Text = ApMD.CalculateTotal(ApMD.importCart(Program.CurrentStudent)).ToString();
+            int TotalCost = int.Parse(TotalCostDsply.Text);
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to complete this order?", "Complete Order", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                DialogResult dialogResult2 = MessageBox.Show("Do you want to print a receipt?", "Receipt Printing", MessageBoxButtons.YesNo);
+                if (dialogResult2 == DialogResult.Yes)
+                {
+                    Student person = Program.CurrentStudent;
+                    MessageBox.Show(ApMD.printReceipt(person, TotalCost));
+                    EndTransition();
+                }
+                else if (dialogResult2 == DialogResult.No)
+                {
+                    MessageBox.Show("Order completed");
+                    EndTransition();
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                MessageBox.Show("Order cancelled");
+                return;
+
+            }
+
+        }
+
+
+        private void EndTransition()
+        {
+            this.Close();
+            EndScreen endScreen = new EndScreen();
+            endScreen.Show();
+        }
+
+        private void PrintRental()
+        {
+            this.Close();
         }
     }
 }

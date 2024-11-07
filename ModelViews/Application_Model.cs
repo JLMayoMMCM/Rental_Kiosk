@@ -6,14 +6,12 @@ using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using Rental_App_V1._0.Models;
 using Image = System.Drawing.Image;
-using Rental_App_V1._0.Models;
-using Rental_Kiosk.Views;
 
 namespace Rental_App_V1._0.ModelViews
 {
     internal class Application_Model
     {
-        internal string connectionString = "Data Source=localhost\\VPDBOOP;Initial Catalog=VPDB;integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        internal string connectionString = "Data Source=localhost\\VPDBOOP;Initial Catalog=VPDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         public Student CheckIfExist(String id)
         {
             string query = $"SELECT * FROM studentData WHERE StudentID = '{id}'";
@@ -96,10 +94,10 @@ namespace Rental_App_V1._0.ModelViews
                 }
             }
         }
-        public DataTable importCart(Student student)
+        public DataTable importCart(string idinput)
         {
-            string id = student.StudentID;
-            string query = $"SELECT ItemID, StudentID, Name, Category, RentPerDay, RentDuration, ItemImage, TotalPrice FROM Cart WHERE StudentID = '{id}'";
+            string id = idinput;
+            string query = $"SELECT ItemID, StudentID, Name, Category, RentPerDay, RentDuration, ItemImage, TotalPrice FROM Checkout WHERE StudentID = '{id}'";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -210,8 +208,8 @@ namespace Rental_App_V1._0.ModelViews
         {
             Cart cart1 = cart;
 
-            string checkQuery = $"SELECT * FROM Cart WHERE ItemID = '{cart1.ItemId}'";
-            string insertQuery = $"INSERT into Cart (ItemID, StudentID, Name, Category, RentPerDay, RentDuration, ItemImage, TotalPrice) VALUES ('{cart1.ItemId}', '{cart1.StudentId}', '{cart1.Name}', '{cart1.Category}', '{cart1.RentPerDay}', '{cart1.NoOfRentDays}', '{cart1.ItemImage}', '{cart1.TotalPrice}')";
+            string checkQuery = $"SELECT * FROM Checkout WHERE ItemID = '{cart1.ItemId}'";
+            string insertQuery = $"INSERT into Checkout (ItemID, StudentID, Name, Category, RentPerDay, RentDuration, ItemImage, TotalPrice) VALUES ('{cart1.ItemId}', '{cart1.StudentId}', '{cart1.Name}', '{cart1.Category}', '{cart1.RentPerDay}', '{cart1.NoOfRentDays}', '{cart1.ItemImage}', '{cart1.TotalPrice}')";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -241,7 +239,7 @@ namespace Rental_App_V1._0.ModelViews
 
         public Boolean RemoveFromCart(int id)
         {
-            string query = $"DELETE FROM Cart WHERE ItemID = '{id}'";
+            string query = $"DELETE FROM Checkout WHERE ItemID = '{id}'";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -269,6 +267,42 @@ namespace Rental_App_V1._0.ModelViews
         private Image ResizeImage(Image imgToResize, int width, int height)
         {
             return (Image)(new Bitmap(imgToResize, new Size(width, height)));
+        }
+
+
+        public String printReceipt(Student person, int totalCost)
+        {
+            string receipt = "Receipt\n";
+            receipt += "\tRental_App_V1" + "\n";
+            receipt += "========================\n";
+            receipt += "Date\t\t: " + DateTime.Now + "\n";
+            receipt += "Student ID\t: " + person.StudentID + "\n";
+            receipt += "Student Name\t: " + person.StudentName + "\n";
+            receipt += "Total Cost\t: " + totalCost + "\n";
+            receipt += "\tItems List" + "\n";
+
+            string query = $"SELECT * FROM Checkout WHERE StudentID = '{person.StudentID}'";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            receipt += "Item Name\t: " + reader.GetString(reader.GetOrdinal("Name")) + "\n";
+                            receipt += "Category\t: " + reader.GetString(reader.GetOrdinal("Category")) + "\n";
+                            receipt += "Rent Per Day\t: " + reader.GetInt32(reader.GetOrdinal("RentPerDay")) + "\n";
+                            receipt += "Rent Duration\t: " + reader.GetInt32(reader.GetOrdinal("RentDuration")) + "\n";
+                            receipt += "Total Price\t: " + reader.GetInt32(reader.GetOrdinal("TotalPrice")) + "\n";
+                            receipt += "========================\n";
+                        }
+                    }
+                }
+                return receipt;
+            }
         }
     }
 }

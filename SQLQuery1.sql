@@ -22,7 +22,7 @@ VALUES
 (10, '2021110166', 'Jonathan Lance Mayo', 'Bachelor of Science in Information Systems', '+639205696575', 1);
 
 
-CREATE TABLE [dbo].[Cart] (
+CREATE TABLE [dbo].[Checkout] (
     [ItemID]     INT           NOT NULL,
     [StudentID]  VARCHAR (10)  NOT NULL,
     [Name]       VARCHAR (25)  NOT NULL,
@@ -31,8 +31,16 @@ CREATE TABLE [dbo].[Cart] (
     [RentDuration] INT		 NOT NULL,
     [ItemImage]  VARCHAR (MAX) NULL,
     [TotalPrice] INT           NOT NULL,
-    CONSTRAINT [PK_Cart] PRIMARY KEY CLUSTERED ([ItemID] ASC)
+    CONSTRAINT [PK_Checkout] PRIMARY KEY CLUSTERED ([ItemID] ASC)
 );
 
 
+CREATE TABLE [dbo].[ItemList] (
+    [ItemID]     INT        NOT NULL,
+    [Name]       CHAR (25)  NOT NULL,
+    [Category]   CHAR (25)  NULL,
+    [RentPerDay] INT        NOT NULL,
+    [ItemImage]  VARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([ItemID] ASC)
+);
 

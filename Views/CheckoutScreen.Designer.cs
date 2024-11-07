@@ -50,7 +50,6 @@
             this.CartOrderSmmry.ReadOnly = true;
             this.CartOrderSmmry.Size = new System.Drawing.Size(390, 270);
             this.CartOrderSmmry.TabIndex = 0;
-            this.CartOrderSmmry.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.CartOrderSmmry_UserDeletedRow);
             // 
             // DeleteBtn
             // 
@@ -114,6 +113,7 @@
             this.ConfirmBtn.TabIndex = 6;
             this.ConfirmBtn.Text = "CONFIRM RENT";
             this.ConfirmBtn.UseVisualStyleBackColor = false;
+            this.ConfirmBtn.Click += new System.EventHandler(this.Complete_Order);
             // 
             // CheckoutScreen
             // 
