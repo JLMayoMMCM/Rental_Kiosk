@@ -22,6 +22,8 @@ namespace Rental_Kiosk.Views
             DataTable ItemData = ApModel.ImportData();
             ItemGridRental.DataSource = ItemData;
             ItemGridRental.Columns[ItemGridRental.Columns.Count - 1].Visible = false;
+
+            DaysCBO.SelectedIndex = 0;
         }
         private void CartTransition()
         {
@@ -40,11 +42,11 @@ namespace Rental_Kiosk.Views
             int RentPerDay = int.Parse(row.Cells[3].Value.ToString());
             string ImagePath = row.Cells[5].Value.ToString();
             string studentID = Program.LoginStudentID;
-            int noOfDays = 1;
+            int noOfDays = int.Parse(DaysCBO.Text);
 
 
 
-            DialogResult result = MessageBox.Show("Do you want to rent " + ItemName + "?", "Rent Item", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show($"Do you want to rent '{ItemName}' for '{noOfDays}' Days?", "Rent Item", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {

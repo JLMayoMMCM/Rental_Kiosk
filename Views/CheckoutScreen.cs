@@ -9,16 +9,17 @@ namespace Rental_Kiosk.Views
     {
         Application_Model ApMD = new Application_Model();
 
+
         public CheckoutScreen()
         {
             InitializeComponent();
             loadData();
-            TotalCostDsply.Text = ApMD.CalculateTotal(ApMD.importCart(Program.LoginStudentID)).ToString();
+            TotalCostDsply.Text = ApMD.CalculateTotal(ApMD.importCart(Program.CurrentStudent)).ToString();
         }
 
         private void loadData()
         {
-            DataTable dt = ApMD.importCart(Program.LoginStudentID);
+            DataTable dt = ApMD.importCart(Program.CurrentStudent);
             CartOrderSmmry.DataSource = dt;
         }
 
@@ -39,7 +40,7 @@ namespace Rental_Kiosk.Views
 
         private void CartOrderSmmry_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
-            TotalCostDsply.Text = ApMD.CalculateTotal(ApMD.importCart(Program.LoginStudentID)).ToString();
+           TotalCostDsply.Text = ApMD.CalculateTotal(ApMD.importCart(Program.CurrentStudent)).ToString();
         }
     }
 }

@@ -96,9 +96,10 @@ namespace Rental_App_V1._0.ModelViews
                 }
             }
         }
-        public DataTable importCart(string id)
+        public DataTable importCart(Student student)
         {
-            string query = $"SELECT ItemID, StudentID, Name, Category, RentPerDay, ItemImage, TotalPrice FROM Cart WHERE StudentID = '{id}'";
+            string id = student.StudentID;
+            string query = $"SELECT ItemID, StudentID, Name, Category, RentPerDay, RentDuration, ItemImage, TotalPrice FROM Cart WHERE StudentID = '{id}'";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -260,7 +261,7 @@ namespace Rental_App_V1._0.ModelViews
             int total = 0;
             foreach (DataRow row in dataTable.Rows)
             {
-                total += int.Parse(row[6].ToString());
+                total += int.Parse(row[7].ToString());
             }
             return total;
         }

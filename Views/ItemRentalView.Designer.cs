@@ -31,10 +31,10 @@
             this.ItemGridRental = new System.Windows.Forms.DataGridView();
             this.SearchInput = new System.Windows.Forms.TextBox();
             this.SearchLbl = new System.Windows.Forms.Label();
-            this.RentalDaysAmnt = new System.Windows.Forms.ComboBox();
             this.CboLbl = new System.Windows.Forms.Label();
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.ViewCartBtn = new System.Windows.Forms.Button();
+            this.DaysCBO = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ItemGridRental)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,31 +78,6 @@
             this.SearchLbl.TabIndex = 2;
             this.SearchLbl.Text = "SEARCH";
             // 
-            // RentalDaysAmnt
-            // 
-            this.RentalDaysAmnt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.RentalDaysAmnt.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.RentalDaysAmnt.FormattingEnabled = true;
-            this.RentalDaysAmnt.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14"});
-            this.RentalDaysAmnt.Location = new System.Drawing.Point(660, 360);
-            this.RentalDaysAmnt.Name = "RentalDaysAmnt";
-            this.RentalDaysAmnt.Size = new System.Drawing.Size(121, 21);
-            this.RentalDaysAmnt.TabIndex = 3;
-            // 
             // CboLbl
             // 
             this.CboLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -116,6 +91,7 @@
             // 
             // LogoutBtn
             // 
+            this.LogoutBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LogoutBtn.BackColor = System.Drawing.Color.Crimson;
             this.LogoutBtn.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogoutBtn.Location = new System.Drawing.Point(15, 405);
@@ -139,15 +115,41 @@
             this.ViewCartBtn.UseVisualStyleBackColor = false;
             this.ViewCartBtn.Click += new System.EventHandler(this.ViewCart);
             // 
+            // DaysCBO
+            // 
+            this.DaysCBO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DaysCBO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DaysCBO.Font = new System.Drawing.Font("McLaren", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DaysCBO.FormattingEnabled = true;
+            this.DaysCBO.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14"});
+            this.DaysCBO.Location = new System.Drawing.Point(660, 360);
+            this.DaysCBO.Name = "DaysCBO";
+            this.DaysCBO.Size = new System.Drawing.Size(121, 24);
+            this.DaysCBO.TabIndex = 7;
+            // 
             // ItemRentalView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DaysCBO);
             this.Controls.Add(this.ViewCartBtn);
             this.Controls.Add(this.LogoutBtn);
             this.Controls.Add(this.CboLbl);
-            this.Controls.Add(this.RentalDaysAmnt);
             this.Controls.Add(this.SearchLbl);
             this.Controls.Add(this.SearchInput);
             this.Controls.Add(this.ItemGridRental);
@@ -166,9 +168,9 @@
         private System.Windows.Forms.DataGridView ItemGridRental;
         private System.Windows.Forms.TextBox SearchInput;
         private System.Windows.Forms.Label SearchLbl;
-        private System.Windows.Forms.ComboBox RentalDaysAmnt;
         private System.Windows.Forms.Label CboLbl;
         private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.Button ViewCartBtn;
+        private System.Windows.Forms.ComboBox DaysCBO;
     }
 }
