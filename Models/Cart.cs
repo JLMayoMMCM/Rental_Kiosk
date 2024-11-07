@@ -7,7 +7,6 @@ namespace Rental_App_V1._0.Models
 
         public string StudentId { get; set; }
         public string Name { get; set; }
-
         public string Category { get; set; }
 
         public int RentPerDay { get; set; }

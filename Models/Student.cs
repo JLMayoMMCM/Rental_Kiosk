@@ -8,29 +8,31 @@ namespace Rental_App_V1._0.Models
 {
     internal class Student
     {
+        public int PrimaryID { get; set; }
         public string StudentID { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
-
-        public string Program { get; set; }
-
+        public string StudentName { get; set; }
+        public string number { get; set; }
+        public string StudentProgram { get; set; }
+        public Boolean IsEnroled { get; set; }
 
         public Student()
         {
+            PrimaryID = 0;
             StudentID = null;
-            Name = null;
-            Age = 1;
-            Program = null;
+            StudentName = null;
+            number = null;
+            StudentProgram = null;
+            IsEnroled = false;
         }
 
-        public Student(string studentID, string name, int age, string program)
+        public Student(int primaryID, string studentID, string name, string num, string program, bool isEnroled)
         {
+            PrimaryID = primaryID;
             StudentID = studentID;
-            Name = name;
-            Age = age;
-            Program = program;
+            StudentName = name;
+            number = num;
+            StudentProgram = program;
+            IsEnroled = isEnroled;
         }
-
-
     }
 }

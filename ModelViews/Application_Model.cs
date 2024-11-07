@@ -25,7 +25,7 @@ namespace Rental_App_V1._0.ModelViews
                     {
                         if (reader.Read())
                         {
-                            Student student = new Student(reader.GetString(reader.GetOrdinal("StudentID")), reader.GetString(reader.GetOrdinal("Name")), reader.GetInt32(reader.GetOrdinal("Age")), reader.GetString(reader.GetOrdinal("Program")));
+                            Student student = new Student(reader.GetInt32(reader.GetOrdinal("PrimaryKey")), reader.GetString(reader.GetOrdinal("StudentID")),reader.GetString(reader.GetOrdinal("Name")), reader.GetString(reader.GetOrdinal("ContactNo")), reader.GetString(reader.GetOrdinal("Program")), reader.GetBoolean(reader.GetOrdinal("IsEnrolled")));
                             connection.Close();
                             return student;
                         }
@@ -88,114 +88,6 @@ namespace Rental_App_V1._0.ModelViews
                             dt.Rows.Add(itemId, name, category, price, itemImage, imageAddress);
 
                         }
-                        connection.Close();
-                        return dt;
-                    }
-                }
-            }
-        }
-        public DataTable ImportData(string categorie)
-        {
-            string query = $"SELECT ItemID, Name, Category, RentPerDay, ItemImage FROM itemList WHERE Category = '{categorie}'";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        DataTable dt = new DataTable();
-
-                        dt.Columns.Add("ItemID", typeof(int));
-                        dt.Columns.Add("Name", typeof(string));
-                        dt.Columns.Add("Category", typeof(string));
-                        dt.Columns.Add("RentPerDay", typeof(int));
-                        dt.Columns.Add("ItemImage", typeof(Image));
-                        dt.Columns.Add("ItemPath", typeof(string));
-
-
-
-                        while (reader.Read())
-                        {
-                            int itemId = reader.GetInt32(reader.GetOrdinal("ItemID"));
-                            string name = reader.GetString(reader.GetOrdinal("Name"));
-                            string category = reader.GetString(reader.GetOrdinal("Category"));
-                            int price = reader.GetInt32(reader.GetOrdinal("RentPerDay"));
-                            string imagePath = reader.GetString(reader.GetOrdinal("ItemImage"));
-                            string imageAddress = reader.GetString(reader.GetOrdinal("ItemImage"));
-             
-
-                            Image itemImage = null;
-                            if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
-                            {
-                                try
-                                {
-                                    itemImage = Image.FromFile(imagePath);
-                                    itemImage = ResizeImage(itemImage, 200, 200);
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Error loading image: " + ex.Message);
-                                }
-                            }
-                            dt.Rows.Add(itemId, name, category, price, itemImage, imageAddress);
-                        }
-                        connection.Close();
-                        return dt;
-                    }
-                }
-            }
-        }
-        
-public DataTable importCart(Cart cart)
-        {
-            string query = $"SELECT ItemID, StudentID, Name, Category, RentPerDay, ItemImage, TotalPrice FROM Cart WHERE StudentID = '{cart.StudentId}'";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        DataTable dt = new DataTable();
-
-                        dt.Columns.Add("ItemID", typeof(int));
-                        dt.Columns.Add("StudentID", typeof(string));
-                        dt.Columns.Add("Name", typeof(string));
-                        dt.Columns.Add("Category", typeof(string));
-                        dt.Columns.Add("RentPerDay", typeof(int));
-                        dt.Columns.Add("ItemImage", typeof(Image));
-                        dt.Columns.Add("TotalPrice", typeof(int));
-
-                        while (reader.Read())
-                        {
-                            int itemId = reader.GetInt32(reader.GetOrdinal("ItemID"));
-                            string studentid = reader.GetString(reader.GetOrdinal("StudentID"));
-                            string name = reader.GetString(reader.GetOrdinal("Name"));
-                            string category = reader.GetString(reader.GetOrdinal("Category"));
-                            int rentPerDay = reader.GetInt32(reader.GetOrdinal("RentPerDay"));
-                            string ImageItem = reader.GetString(reader.GetOrdinal("ItemImage"));
-                            int totalPrice = reader.GetInt32(reader.GetOrdinal("TotalPrice"));
-
-                            Image itemImage = null;
-                            if (!string.IsNullOrEmpty(ImageItem) && File.Exists(ImageItem))
-                            {
-                                try
-                                {
-                                    itemImage = Image.FromFile(ImageItem);
-                                    itemImage = ResizeImage(itemImage, 200, 200);
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Error loading image: " + ex.Message);
-
-                                }
-                            }
-                            dt.Rows.Add(itemId, studentid, name, category, rentPerDay, itemImage, totalPrice);
-                        }
-
                         connection.Close();
                         return dt;
                     }

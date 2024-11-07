@@ -69,7 +69,9 @@
             this.Controls.Add(this.ProgramLogo);
             this.Controls.Add(this.TapPrompt);
             this.Name = "SplashScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Rent-A-Thing";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Click += new System.EventHandler(this.LoginTransition);
             this.ResumeLayout(false);
             this.PerformLayout();

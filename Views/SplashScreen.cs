@@ -8,6 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+SPLASH SCREEN DOCUMENTATION
+--------------------------
+METHODS/FUNCTIONS
+--------------------------
+SplashScreen() 
+-Constructor for the SplashScreen form
+
+LoginTransition(object sender, EventArgs e)
+-Method that is called when the user clicks the screen
+
+RegisterTransition()
+-Method that closes the current form and opens the Login form
+--------------------------
+ 
+*/
 namespace Rental_Kiosk.Views
 {
     public partial class SplashScreen : Form
@@ -20,9 +36,14 @@ namespace Rental_Kiosk.Views
         private void LoginTransition(object sender, EventArgs e)
         {
             //Closes current form and opens the Login form
+            RegisterTransition();
+        }
+
+        private void RegisterTransition()
+        {
             this.Hide();
-            LoginScreen login = new LoginScreen();
-            login.Show();
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
         }
     }
 }

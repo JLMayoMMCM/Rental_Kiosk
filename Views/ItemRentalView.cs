@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Windows.Forms;
+using Rental_App_V1._0.ModelViews;
+
 
 namespace Rental_Kiosk.Views
 {
@@ -15,6 +10,22 @@ namespace Rental_Kiosk.Views
         public ItemRentalView()
         {
             InitializeComponent();
+            ImportData();
+        }
+
+
+        private void ImportData()
+        {
+            Application_Model ApModel = new Application_Model();
+            DataTable ItemData = ApModel.ImportData();
+            ItemGridRental.DataSource = ItemData;
+            //hide the last column
+            ItemGridRental.Columns[ItemGridRental.Columns.Count - 1].Visible = false;
+
+            //Set default value
+            RentalDaysAmnt.Text = "1";
+
+
         }
     }
 }

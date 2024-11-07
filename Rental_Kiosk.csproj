@@ -210,6 +210,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Cart.resx">
+      <DependentUpon>Cart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CheckStudent.resx">
+      <DependentUpon>CheckStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ItemRentalView.resx">
+      <DependentUpon>ItemRentalView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>

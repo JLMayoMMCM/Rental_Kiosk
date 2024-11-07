@@ -57,6 +57,7 @@
             // 
             // LoginIDBtn
             // 
+            this.LoginIDBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LoginIDBtn.Location = new System.Drawing.Point(280, 366);
             this.LoginIDBtn.Name = "LoginIDBtn";
             this.LoginIDBtn.Size = new System.Drawing.Size(240, 31);
@@ -76,7 +77,9 @@
             this.Controls.Add(this.LoginBoxLabel);
             this.Controls.Add(this.LoginIDInput);
             this.Name = "LoginScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login Page";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

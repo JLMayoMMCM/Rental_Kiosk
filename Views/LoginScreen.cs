@@ -1,8 +1,24 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
-using Rental_Kiosk.Models;
+using Rental_App_V1._0.Models;
+using Rental_App_V1._0.ModelViews;
+
+/*
+LOGIN SCREEN DOCUMENTATION
+--------------------------
+METHODS/FUNCTIONS
+--------------------------
+LoginScreen()
+- This is the constructor for the LoginScreen class. It initializes the LoginScreen form.
+
+LoginIDBtn_Click(object sender, EventArgs e)
+- This function is called when the user clicks the login button. It checks if the user input 
+is empty and if filled, checks the database for the user.
+
+CheckTransition()
+- This function closes the current form and opens the CheckStudent form.
+--------------------------
+*/
 
 namespace Rental_Kiosk.Views
 {
@@ -18,50 +34,47 @@ namespace Rental_Kiosk.Views
         {
             //checks if the user input is empty and if filled, checks databse for user
 
-            if (LoginIDInput.Text == "")
+            //CHECK IF ID IS EMPTY OR NULL
+            if (LoginIDInput.Text == "" || LoginIDInput.Text == null)
             {
                 MessageBox.Show("Please enter your ID");
                 return;
             }
 
+            //CHECK IF ID IS A NUMBER
             else if (System.Text.RegularExpressions.Regex.IsMatch(LoginIDInput.Text, "[^0-9]"))
             {
                 MessageBox.Show("Please enter only numbers");
                 return;
             }
+
+            //CHECK IF ID IS IN 10 DIGITS
             else if (LoginIDInput.Text.Length != 10)
             {
                 MessageBox.Show("Please enter a 10 digit ID");
-                return;  
+                return;
             }
             else
             {
-                string ID = LoginIDInput.Text;
-                string query = "SELECT * FROM Student WHERE StudentID = " + ID;
-
-                //checks if the user is in the database
-                using (SqlConnection connection = new SqlConnection(Program.connectionString))
+                Application_Model application_Model = new Application_Model();
+                Student student = application_Model.CheckIfExist(LoginIDInput.Text);
+                if (student == null)
                 {
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                reader.Read();
-                                Student student = new Student(reader["StudentID"].ToString(), reader["Name"].ToString(), Convert.ToInt32(reader["Age"]), reader["Program"].ToString());
-                                this.Hide();
-                                MainMenu mainMenu = new MainMenu(student);
-                                mainMenu.Show();
-                            }
-                            else
-                            {
-                                MessageBox.Show("User not found");
-                            }
-                        }
-                    }
+                    MessageBox.Show("Student does not exist");
+                    return;
+                }
+                else
+                {   
+                    Program.LoginStudentID = student.StudentID;
+                    CheckTransition();
                 }
             }
         }
+        private void CheckTransition()
+        {
+            this.Close();
+            CheckStudent checkStudent = new CheckStudent();
+            checkStudent.Show();
+        }
+    }
 }
