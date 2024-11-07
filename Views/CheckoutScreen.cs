@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Rental_Kiosk.Views
 {
-    public partial class Cart : Form
+    public partial class CheckoutScreen : Form
     {
-        public Cart()
+        public CheckoutScreen()
         {
             InitializeComponent();
         }

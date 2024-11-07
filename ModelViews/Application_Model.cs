@@ -149,7 +149,7 @@ namespace Rental_App_V1._0.ModelViews
             }
         }
 
-        public DataTable searchFilter(string word, string cat)
+        public DataTable SearchFilter(string word, string cat)
         {
             string query = $"SELECT ItemID, Name, Category, RentPerDay, ItemImage FROM itemList WHERE Name LIKE '%{word}%' AND Category = '{cat}'";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -201,7 +201,7 @@ namespace Rental_App_V1._0.ModelViews
             }
         }
 
-        public bool exportData(Cart cart)
+        public Boolean AddtoCart(Cart cart)
         {
             Cart cart1 = cart;
 

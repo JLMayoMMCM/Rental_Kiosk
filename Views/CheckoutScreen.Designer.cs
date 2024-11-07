@@ -1,6 +1,6 @@
 ﻿namespace Rental_Kiosk.Views
 {
-    partial class Cart
+    partial class CheckoutScreen
     {
         /// <summary>
         /// Required designer variable.

@@ -21,3 +21,17 @@ VALUES
 (9, '2023130368', 'Sandara Monterola', 'Bachelor of Science in Information System', '+639451542813', 1),
 (10, '2021110166', 'Jonathan Lance Mayo', 'Bachelor of Science in Information Systems', '+639205696575', 1);
 
+
+CREATE TABLE [dbo].[Cart] (
+    [ItemID]     INT           NOT NULL,
+    [StudentID]  VARCHAR (10)  NOT NULL,
+    [Name]       VARCHAR (25)  NOT NULL,
+    [Category]   VARCHAR (25)  NULL,
+    [RentPerDay] INT           NOT NULL,
+    [ItemImage]  VARCHAR (MAX) NULL,
+    [TotalPrice] INT           NOT NULL,
+    CONSTRAINT [PK_Cart] PRIMARY KEY CLUSTERED ([ItemID] ASC)
+);
+
+
+

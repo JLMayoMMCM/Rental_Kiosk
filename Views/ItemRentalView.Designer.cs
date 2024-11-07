@@ -38,14 +38,22 @@
             // 
             // ItemGridRental
             // 
+            this.ItemGridRental.AllowUserToAddRows = false;
+            this.ItemGridRental.AllowUserToDeleteRows = false;
+            this.ItemGridRental.AllowUserToResizeColumns = false;
+            this.ItemGridRental.AllowUserToResizeRows = false;
             this.ItemGridRental.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ItemGridRental.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.ItemGridRental.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ItemGridRental.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemGridRental.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ItemGridRental.Location = new System.Drawing.Point(15, 45);
+            this.ItemGridRental.MultiSelect = false;
             this.ItemGridRental.Name = "ItemGridRental";
+            this.ItemGridRental.ReadOnly = true;
             this.ItemGridRental.Size = new System.Drawing.Size(765, 315);
             this.ItemGridRental.TabIndex = 0;
+            this.ItemGridRental.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectItem);
             // 
             // SearchInput
             // 
@@ -113,7 +121,7 @@
             this.Name = "ItemRentalView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ItemRentalView";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ItemGridRental)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

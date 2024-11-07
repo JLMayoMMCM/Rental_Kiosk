@@ -55,7 +55,6 @@ namespace Rental_Kiosk.Views
             ItemRentalView itemRental = new ItemRentalView();
             itemRental.Show();
         }
-
         private void LoginTransition()
         {
             this.Close(); 
@@ -65,6 +64,7 @@ namespace Rental_Kiosk.Views
 
         private void CheckYesBtn_Click(object sender, System.EventArgs e)
         {
+            Program.CurrentStudent = student;
             GridTransition();
         }
         private void CheckNoBtn_Click(object sender, System.EventArgs e)
