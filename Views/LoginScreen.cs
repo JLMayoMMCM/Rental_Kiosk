@@ -73,6 +73,7 @@ namespace Rental_Kiosk.Views
         private void CheckTransition()
         {
             this.Close();
+            LoginIDInput.Text = "";
             CheckStudent checkStudent = new CheckStudent();
             checkStudent.Show();
         }

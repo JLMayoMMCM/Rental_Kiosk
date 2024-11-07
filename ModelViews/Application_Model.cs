@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using Rental_App_V1._0.Models;
 using Image = System.Drawing.Image;
+using Rental_App_V1._0.Models;
+using Rental_Kiosk.Views;
 
 namespace Rental_App_V1._0.ModelViews
 {
@@ -25,7 +27,7 @@ namespace Rental_App_V1._0.ModelViews
                     {
                         if (reader.Read())
                         {
-                            Student student = new Student(reader.GetInt32(reader.GetOrdinal("PrimaryKey")), reader.GetString(reader.GetOrdinal("StudentID")),reader.GetString(reader.GetOrdinal("Name")), reader.GetString(reader.GetOrdinal("ContactNo")), reader.GetString(reader.GetOrdinal("Program")), reader.GetBoolean(reader.GetOrdinal("IsEnrolled")));
+                            Student student = new Student(reader.GetInt32(reader.GetOrdinal("PrimaryKey")), reader.GetString(reader.GetOrdinal("StudentID")), reader.GetString(reader.GetOrdinal("Name")), reader.GetString(reader.GetOrdinal("ContactNo")), reader.GetString(reader.GetOrdinal("Program")), reader.GetBoolean(reader.GetOrdinal("IsEnrolled")));
                             connection.Close();
                             return student;
                         }
@@ -149,15 +151,15 @@ namespace Rental_App_V1._0.ModelViews
             }
         }
 
-        public DataTable SearchFilter(string word, string cat)
+        public DataTable SearchFilter(string word)
         {
-            string query = $"SELECT ItemID, Name, Category, RentPerDay, ItemImage FROM itemList WHERE Name LIKE '%{word}%' AND Category = '{cat}'";
+            string searchQuery = $"SELECT ItemID, Name, Category, RentPerDay, ItemImage FROM itemList WHERE Name LIKE '%{word}%'";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 DataTable dt = new DataTable();
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(searchQuery, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -236,6 +238,22 @@ namespace Rental_App_V1._0.ModelViews
                 using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
                 {
                     insertCommand.ExecuteNonQuery();
+                }
+                connection.Close();
+                return true;
+            }
+        }
+
+        public Boolean RemoveFromCart(int id)
+        {
+            string query = $"DELETE FROM Cart WHERE ItemID = '{id}'";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.ExecuteNonQuery();
                 }
                 connection.Close();
                 return true;

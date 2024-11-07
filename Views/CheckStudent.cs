@@ -27,8 +27,10 @@ LoginTransition()
 
 namespace Rental_Kiosk.Views
 {
+    
     public partial class CheckStudent : Form
     {
+        Student student = new Student();
         public CheckStudent()
         {
             InitializeComponent();
@@ -65,6 +67,12 @@ namespace Rental_Kiosk.Views
         private void CheckYesBtn_Click(object sender, System.EventArgs e)
         {
             Program.CurrentStudent = student;
+            StudentIDDsply.Text = null;
+            StudentNameDsply.Text = null;
+            StudentNumDsply.Text = null;
+            StudentProgramDsply.Text = null;
+            IsEnrolledDsply.Text = null;
+            StudentProgramDsply.Text = null;
             GridTransition();
         }
         private void CheckNoBtn_Click(object sender, System.EventArgs e)

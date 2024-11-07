@@ -49,7 +49,7 @@
             this.StudentNameLbl.AutoSize = true;
             this.StudentNameLbl.BackColor = System.Drawing.Color.Transparent;
             this.StudentNameLbl.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentNameLbl.Location = new System.Drawing.Point(179, 135);
+            this.StudentNameLbl.Location = new System.Drawing.Point(158, 135);
             this.StudentNameLbl.Name = "StudentNameLbl";
             this.StudentNameLbl.Size = new System.Drawing.Size(146, 23);
             this.StudentNameLbl.TabIndex = 4;
@@ -62,7 +62,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(213, 225);
+            this.label1.Location = new System.Drawing.Point(192, 225);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 23);
             this.label1.TabIndex = 5;
@@ -76,7 +76,7 @@
             this.StudentNumLbl.BackColor = System.Drawing.Color.Transparent;
             this.StudentNumLbl.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StudentNumLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StudentNumLbl.Location = new System.Drawing.Point(157, 270);
+            this.StudentNumLbl.Location = new System.Drawing.Point(136, 270);
             this.StudentNumLbl.Name = "StudentNumLbl";
             this.StudentNumLbl.Size = new System.Drawing.Size(168, 23);
             this.StudentNumLbl.TabIndex = 6;
@@ -89,7 +89,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label3.Location = new System.Drawing.Point(144, 180);
+            this.label3.Location = new System.Drawing.Point(123, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(181, 23);
             this.label3.TabIndex = 7;
@@ -128,7 +128,7 @@
             this.EnrolledStatusLbl.BackColor = System.Drawing.Color.Transparent;
             this.EnrolledStatusLbl.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EnrolledStatusLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EnrolledStatusLbl.Location = new System.Drawing.Point(270, 315);
+            this.EnrolledStatusLbl.Location = new System.Drawing.Point(175, 315);
             this.EnrolledStatusLbl.Name = "EnrolledStatusLbl";
             this.EnrolledStatusLbl.Size = new System.Drawing.Size(129, 23);
             this.EnrolledStatusLbl.TabIndex = 15;
@@ -138,47 +138,47 @@
             // 
             this.StudentNameDsply.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StudentNameDsply.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentNameDsply.Location = new System.Drawing.Point(330, 135);
+            this.StudentNameDsply.Location = new System.Drawing.Point(318, 135);
             this.StudentNameDsply.Name = "StudentNameDsply";
             this.StudentNameDsply.ReadOnly = true;
-            this.StudentNameDsply.Size = new System.Drawing.Size(330, 26);
+            this.StudentNameDsply.Size = new System.Drawing.Size(360, 26);
             this.StudentNameDsply.TabIndex = 17;
             // 
             // StudentIDDsply
             // 
             this.StudentIDDsply.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StudentIDDsply.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentIDDsply.Location = new System.Drawing.Point(339, 225);
+            this.StudentIDDsply.Location = new System.Drawing.Point(312, 225);
             this.StudentIDDsply.Name = "StudentIDDsply";
             this.StudentIDDsply.ReadOnly = true;
-            this.StudentIDDsply.Size = new System.Drawing.Size(225, 26);
+            this.StudentIDDsply.Size = new System.Drawing.Size(261, 26);
             this.StudentIDDsply.TabIndex = 18;
             // 
             // StudentNumDsply
             // 
             this.StudentNumDsply.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StudentNumDsply.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentNumDsply.Location = new System.Drawing.Point(339, 270);
+            this.StudentNumDsply.Location = new System.Drawing.Point(312, 270);
             this.StudentNumDsply.Name = "StudentNumDsply";
             this.StudentNumDsply.ReadOnly = true;
-            this.StudentNumDsply.Size = new System.Drawing.Size(225, 26);
+            this.StudentNumDsply.Size = new System.Drawing.Size(261, 26);
             this.StudentNumDsply.TabIndex = 19;
             // 
             // StudentProgramDsply
             // 
             this.StudentProgramDsply.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StudentProgramDsply.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentProgramDsply.Location = new System.Drawing.Point(341, 180);
+            this.StudentProgramDsply.Location = new System.Drawing.Point(314, 180);
             this.StudentProgramDsply.Name = "StudentProgramDsply";
             this.StudentProgramDsply.ReadOnly = true;
-            this.StudentProgramDsply.Size = new System.Drawing.Size(315, 26);
+            this.StudentProgramDsply.Size = new System.Drawing.Size(364, 26);
             this.StudentProgramDsply.TabIndex = 20;
             // 
             // IsEnrolledDsply
             // 
             this.IsEnrolledDsply.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.IsEnrolledDsply.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IsEnrolledDsply.Location = new System.Drawing.Point(405, 315);
+            this.IsEnrolledDsply.Location = new System.Drawing.Point(312, 315);
             this.IsEnrolledDsply.Name = "IsEnrolledDsply";
             this.IsEnrolledDsply.ReadOnly = true;
             this.IsEnrolledDsply.Size = new System.Drawing.Size(75, 26);

@@ -8,6 +8,7 @@ namespace Rental_Kiosk.Views
 {
     public partial class ItemRentalView : Form
     {
+        Application_Model ApModel = new Application_Model();
         public ItemRentalView()
         {
             InitializeComponent();
@@ -17,7 +18,6 @@ namespace Rental_Kiosk.Views
 
         private void ImportData()
         {
-            Application_Model ApModel = new Application_Model();
             DataTable ItemData = ApModel.ImportData();
             ItemGridRental.DataSource = ItemData;
             //hide the last column
@@ -28,8 +28,14 @@ namespace Rental_Kiosk.Views
 
 
         }
+        private void CartTransition()
+        {
+            this.Close();
+            CheckoutScreen cart = new CheckoutScreen();
+            cart.Show();
+        }
 
-        private void SelectItem(object sender, DataGridViewCellEventArgs e)
+        private void SelItemCart(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = ItemGridRental.Rows[e.RowIndex];
 
@@ -46,7 +52,6 @@ namespace Rental_Kiosk.Views
 
             if (result == DialogResult.Yes)
             {
-                Application_Model ApModel = new Application_Model();
                 Cart item = new Cart(ItemID, studentID, ItemName, Category, RentPerDay, ImagePath, noOfDays, noOfDays * RentPerDay);
                 if (ApModel.AddtoCart(item) == true)
                 {
@@ -64,14 +69,30 @@ namespace Rental_Kiosk.Views
                 MessageBox.Show("Item not added to cart", "Cancel Transaction");
                 return;
             }
-
         }
 
-        private void CartTransition()
+        private void LogoutBtn_Click(object sender, System.EventArgs e)
         {
             this.Close();
-            CheckoutScreen cart = new CheckoutScreen();
-            cart.Show();
+            LoginScreen login = new LoginScreen();
+            login.Show();
+        }
+
+        private void resetData()
+        {
+            ItemGridRental.DataSource = null;
+            Program.CurrentStudent = null;
+            Program.LoginStudentID = "";
+        }
+        private void SearchInput_TextChanged(object sender, KeyEventArgs e)
+        {
+            ApModel.SearchFilter(SearchInput.Text);
+        }
+
+        private void ViewCart(object sender, System.EventArgs e)
+        {
+            ItemGridRental.DataSource = null;
+            CartTransition();
         }
     }
 }
