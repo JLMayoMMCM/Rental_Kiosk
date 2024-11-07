@@ -82,7 +82,6 @@
             // 
             this.RentalDaysAmnt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.RentalDaysAmnt.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.RentalDaysAmnt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RentalDaysAmnt.FormattingEnabled = true;
             this.RentalDaysAmnt.Items.AddRange(new object[] {
             "1",
@@ -94,7 +93,11 @@
             "7",
             "8",
             "9",
-            "10"});
+            "10",
+            "11",
+            "12",
+            "13",
+            "14"});
             this.RentalDaysAmnt.Location = new System.Drawing.Point(660, 360);
             this.RentalDaysAmnt.Name = "RentalDaysAmnt";
             this.RentalDaysAmnt.Size = new System.Drawing.Size(121, 21);

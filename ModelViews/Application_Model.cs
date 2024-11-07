@@ -114,6 +114,7 @@ namespace Rental_App_V1._0.ModelViews
                         dt.Columns.Add("Name", typeof(string));
                         dt.Columns.Add("Category", typeof(string));
                         dt.Columns.Add("RentPerDay", typeof(int));
+                        dt.Columns.Add("RentDuration", typeof(int));
                         dt.Columns.Add("ItemImage", typeof(Image));
                         dt.Columns.Add("TotalPrice", typeof(int));
 
@@ -124,6 +125,7 @@ namespace Rental_App_V1._0.ModelViews
                             string name = reader.GetString(reader.GetOrdinal("Name"));
                             string category = reader.GetString(reader.GetOrdinal("Category"));
                             int rentPerDay = reader.GetInt32(reader.GetOrdinal("RentPerDay"));
+                            int rentDuration = reader.GetInt32(reader.GetOrdinal("RentDuration"));
                             string ImageItem = reader.GetString(reader.GetOrdinal("ItemImage"));
                             int totalPrice = reader.GetInt32(reader.GetOrdinal("TotalPrice"));
 
@@ -141,7 +143,7 @@ namespace Rental_App_V1._0.ModelViews
 
                                 }
                             }
-                            dt.Rows.Add(itemId, studentid, name, category, rentPerDay, itemImage, totalPrice);
+                            dt.Rows.Add(itemId, studentid, name, category, rentPerDay, rentDuration, itemImage, totalPrice);
                         }
 
                         connection.Close();
@@ -207,16 +209,8 @@ namespace Rental_App_V1._0.ModelViews
         {
             Cart cart1 = cart;
 
-            string studentID = cart.StudentId;
-            string itemName = cart.Name;
-            string itemCategory = cart.Category;
-            int itemPrice = cart.RentPerDay;
-            string itemImage = cart.ItemImage;
-            int rentDays = cart.NoOfRentDays;
-            int totalrent = cart.TotalPrice;
-
             string checkQuery = $"SELECT * FROM Cart WHERE ItemID = '{cart1.ItemId}'";
-            string insertQuery = $"INSERT intO Cart (ItemID, StudentID, Name, Category, RentPerDay, ItemImage, TotalPrice) VALUES ('{cart1.ItemId}', '{cart1.StudentId}', '{cart1.Name}', '{cart1.Category}', '{cart1.RentPerDay}', '{cart1.ItemImage}', '{cart1.TotalPrice}')";
+            string insertQuery = $"INSERT into Cart (ItemID, StudentID, Name, Category, RentPerDay, RentDuration, ItemImage, TotalPrice) VALUES ('{cart1.ItemId}', '{cart1.StudentId}', '{cart1.Name}', '{cart1.Category}', '{cart1.RentPerDay}', '{cart1.NoOfRentDays}', '{cart1.ItemImage}', '{cart1.TotalPrice}')";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -266,7 +260,7 @@ namespace Rental_App_V1._0.ModelViews
             int total = 0;
             foreach (DataRow row in dataTable.Rows)
             {
-                total += int.Parse(row[5].ToString());
+                total += int.Parse(row[6].ToString());
             }
             return total;
         }

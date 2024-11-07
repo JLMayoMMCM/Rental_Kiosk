@@ -30,15 +30,15 @@ namespace Rental_App_V1._0.Models
             TotalPrice = 0;
         }
 
-        public Cart(int itemID, string studentID, string name, string category, int rentPerDay, string itemImage, int NoOfRentDays, int TotalRentCost)
+        public Cart(int itemID, string studentID, string name, string category, int rentPerDay, int NoOfRentDay, string itemImage, int TotalRentCost)
         {
             ItemId = itemID;
             StudentId = studentID;
             Name = name;
             Category = category;
             RentPerDay = rentPerDay;
+            NoOfRentDays = NoOfRentDay;
             ItemImage = itemImage;
-            this.NoOfRentDays = NoOfRentDays;
             TotalPrice = TotalRentCost;
         }
     }

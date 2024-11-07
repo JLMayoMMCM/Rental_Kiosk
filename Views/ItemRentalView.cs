@@ -13,6 +13,7 @@ namespace Rental_Kiosk.Views
         {
             InitializeComponent();
             ImportData();
+
         }
 
 
@@ -20,13 +21,7 @@ namespace Rental_Kiosk.Views
         {
             DataTable ItemData = ApModel.ImportData();
             ItemGridRental.DataSource = ItemData;
-            //hide the last column
             ItemGridRental.Columns[ItemGridRental.Columns.Count - 1].Visible = false;
-
-            //Set default value
-            RentalDaysAmnt.Text = "1";
-
-
         }
         private void CartTransition()
         {
@@ -45,14 +40,15 @@ namespace Rental_Kiosk.Views
             int RentPerDay = int.Parse(row.Cells[3].Value.ToString());
             string ImagePath = row.Cells[5].Value.ToString();
             string studentID = Program.LoginStudentID;
-            int noOfDays = int.Parse(RentalDaysAmnt.Text);
+            int noOfDays = 1;
+
 
 
             DialogResult result = MessageBox.Show("Do you want to rent " + ItemName + "?", "Rent Item", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
-                Cart item = new Cart(ItemID, studentID, ItemName, Category, RentPerDay, ImagePath, noOfDays, noOfDays * RentPerDay);
+                Cart item = new Cart(ItemID, studentID, ItemName, Category, RentPerDay, noOfDays, ImagePath, noOfDays * RentPerDay);
                 if (ApModel.AddtoCart(item) == true)
                 {
                     MessageBox.Show("Item added to cart", "Transaction Successful");

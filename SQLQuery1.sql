@@ -28,6 +28,7 @@ CREATE TABLE [dbo].[Cart] (
     [Name]       VARCHAR (25)  NOT NULL,
     [Category]   VARCHAR (25)  NULL,
     [RentPerDay] INT           NOT NULL,
+    [RentDuration] INT		 NOT NULL,
     [ItemImage]  VARCHAR (MAX) NULL,
     [TotalPrice] INT           NOT NULL,
     CONSTRAINT [PK_Cart] PRIMARY KEY CLUSTERED ([ItemID] ASC)
