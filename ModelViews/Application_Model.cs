@@ -260,6 +260,17 @@ namespace Rental_App_V1._0.ModelViews
             }
         }
 
+        public int CalculateTotal(DataTable dt)
+        {
+            DataTable dataTable = dt;
+            int total = 0;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                total += int.Parse(row[5].ToString());
+            }
+            return total;
+        }
+
         private Image ResizeImage(Image imgToResize, int width, int height)
         {
             return (Image)(new Bitmap(imgToResize, new Size(width, height)));

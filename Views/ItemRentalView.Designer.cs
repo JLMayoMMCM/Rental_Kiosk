@@ -125,6 +125,7 @@
             // 
             // ViewCartBtn
             // 
+            this.ViewCartBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ViewCartBtn.BackColor = System.Drawing.Color.SpringGreen;
             this.ViewCartBtn.Font = new System.Drawing.Font("McLaren", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewCartBtn.Location = new System.Drawing.Point(15, 360);
