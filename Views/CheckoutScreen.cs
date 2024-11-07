@@ -13,6 +13,7 @@ namespace Rental_Kiosk.Views
         {
             InitializeComponent();
             loadData();
+            MessageBox.Show(TotalCostDsply.Text = ApMD.CalculateTotal(ApMD.importCart(Program.LoginStudentID)).ToString());
             TotalCostDsply.Text = ApMD.CalculateTotal(ApMD.importCart(Program.LoginStudentID)).ToString();
         }
 

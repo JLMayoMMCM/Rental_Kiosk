@@ -95,7 +95,6 @@
             // TotalCostDsply
             // 
             this.TotalCostDsply.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TotalCostDsply.Enabled = false;
             this.TotalCostDsply.Font = new System.Drawing.Font("McLaren", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalCostDsply.Location = new System.Drawing.Point(450, 165);
             this.TotalCostDsply.Name = "TotalCostDsply";
