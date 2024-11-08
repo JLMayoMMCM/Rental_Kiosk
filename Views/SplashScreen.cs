@@ -52,8 +52,8 @@ namespace Rental_Kiosk.Views
 
         private void RemindersTransition()
         {
-            this.Hide();
-            LendInstruction reminders = new LendInstruction();
+            this.Close();
+            Reminders reminders = new Reminders();
             reminders.Show();
         }
     }

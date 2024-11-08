@@ -64,7 +64,7 @@
             this.SearchInput.Name = "SearchInput";
             this.SearchInput.Size = new System.Drawing.Size(145, 20);
             this.SearchInput.TabIndex = 1;
-            this.SearchInput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchInput_TextChanged);
+            this.SearchInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchInput_TextChanged);
             // 
             // SearchLbl
             // 
